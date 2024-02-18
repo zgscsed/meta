@@ -4,7 +4,7 @@
  * @Author: zgscsed
  * @Date: 2024-02-07 20:33:00
  * @LastEditors: zgscsed
- * @LastEditTime: 2024-02-08 21:13:09
+ * @LastEditTime: 2024-02-11 18:44:17
  * @Description: file content
  */
 #ifndef TESTTEMPLATE_HPP_
@@ -63,6 +63,39 @@ int TestTemplateInstantiation()
     return 0;
 }
 
+// 类模板特化
+template <class T>
+class MyClass2
+{
+public:
+    MyClass2(T a, T b)
+    {
+        this->a = a;
+        this->b = b;
+    }
+    T add()
+    {
+        return a + b;
+    }
+    T a;
+    T b;
+};
 
+template <>
+class MyClass2<int>
+{
+public:
+    MyClass2(int a, int b)
+    {
+        this->a = a;
+        this->b = b;
+    }
+    int add()
+    {
+        return a + b;
+    }
+    int a;
+    int b;
+};
 
 #endif /* TESTTEMPLATE_HPP_ */
