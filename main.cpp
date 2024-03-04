@@ -8,11 +8,13 @@
  * @Description: file content
  */
 #include <iostream>
-#include "testTemplate.hpp"
+#include "example.hpp"
 
 int main(void)
 {
     TestTemplateInstantiation();
+    TestTemplateSpecialization();
+    TestClassTemplateSpecialization();
     std::cout << "Hello World!" << std::endl;
     return 0;
 }

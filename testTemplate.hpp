@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2024 zgscsed. All rights reserved.
  * @filename: file name
  * @Author: zgscsed
@@ -17,6 +17,13 @@ template <typename T>
 T add(T a, T b)
 {
     return a + b;
+}
+
+// 函数模板语法例子，多个类型参数
+template <class T, class U>
+void print(T a, U b)
+{
+    std::cout << "a: " << a << " b: " << b << std::endl;
 }
 
 // 模板显示实例化声明
@@ -44,58 +51,97 @@ public:
     T b;
 };
 
-
-int TestTemplateInstantiation()
+// 模板实现一个stack类
+template <class T>
+class Stack
 {
-    int a = 1;
-    int b = 2;
-    double c = 1.1;
-    double d = 2.2;
-    std::cout << add(a, b) << std::endl; // 隐式实例化
-    std::cout << add(c, d) << std::endl; // 隐式实例化
-    std::cout << add<double>(a, b) << std::endl; // 显式实例化
-    std::cout << add<int>(c, d) << std::endl; // 显式实例化
+private:
+    T elements[10];
+    int size;
+public:
+    Stack()
+    {
+        size = 0;
+    }
+    void Push(T element)
+    {
+        elements[size++] = element;
+    }
+    T Pop()
+    {
+        return elements[--size];
+    }
+    bool IsEmpty();
+    int GetSize()
+    {
+        return size;
+    }
+};
 
-    MyClass<int> t(1, 2);
-    std::cout << t.add() << std::endl;
-    MyClass<double> t2(1.1, 2.2);
-    std::cout << t2.add() << std::endl;
-    return 0;
+// 类外定义成员函数
+template <class T>
+bool Stack<T>::IsEmpty()
+{
+    return size == 0;
 }
 
-// 类模板特化
-template <class T>
-class MyClass2
+// 模板参数的默认值
+template <class T = int>
+class Stack2
 {
+    T elements[10];
+    int size;
 public:
-    MyClass2(T a, T b)
+    Stack2()
     {
-        this->a = a;
-        this->b = b;
+        size = 0;
     }
-    T add()
+    void Push(T element)
     {
-        return a + b;
+        elements[size++] = element;
     }
-    T a;
-    T b;
+    T Pop()
+    {
+        return elements[--size];
+    }
+    bool IsEmpty();
+    int GetSize()
+    {
+        return size;
+    }
 };
 
-template <>
-class MyClass2<int>
-{
+// 模板参数 非类型参数
+template <class T, size_t size>
+class MyArray{
+    T data[size]; 
+    size_t count;                 //数组元素个数
 public:
-    MyClass2(int a, int b)
-    {
-        this->a = a;
-        this->b = b;
-    }
-    int add()
-    {
-        return a + b;
-    }
-    int a;
-    int b;
+    MyArray(){count=0;}         //构造函数
+    void PushBack(const T& t) 
+    {  if(count<size)  data[count++]=t;  }
+    void PopBack()    { if(count>0)  - -count; }
+    T* Begin(){return data;}      
+    T* End(){return data+count;} 
 };
+
+//声明Container类模板，
+//它有 模板类 参数
+template <class T, size_t size, template <class, size_t> class Seq>
+class Container{
+    Seq<T, size> seq;
+public:
+    void Append(const T& t){ seq.PushBack(t);}
+    T* Begin(){return seq.Begin();}
+    T* End(){return seq.End();}
+};
+
+
+// 函数参数默认值
+template <class T>
+T add2(T a, int b = 10)
+{
+    return a + b;
+}
 
 #endif /* TESTTEMPLATE_HPP_ */
