@@ -18,5 +18,28 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="example.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testTemplateSpecialization.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="testTemplate.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="example.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="testTemplateSpecialization.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

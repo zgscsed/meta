@@ -10,7 +10,7 @@
 #include <iostream>
 #include "example.hpp"
 
-int main(void)
+int main1(void)
 {
     TestTemplateInstantiation();
     TestTemplateSpecialization();
